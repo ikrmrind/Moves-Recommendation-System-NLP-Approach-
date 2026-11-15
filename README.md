@@ -1,4 +1,42 @@
 # 🎬Movie Recommendation Engine
+> A machine learning-powered movie recommendation web app that uses **NLP** to analyze movie attributes and deliver highly accurate, content-based recommendations — wrapped in a modern, **iOS-inspired glassmorphism interface**.
+
+![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-2.x-000000?style=flat&logo=flask&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+---
+
+## ✨ Features
+
+- 🧠 **Content-Based Filtering** — Uses **TF-IDF** (Term Frequency–Inverse Document Frequency) vectorization to analyze movie genres, overviews, and taglines.
+- 📐 **Cosine Similarity Scoring** — Mathematically calculates similarity between thousands of films to serve the **top 10 closest matches**.
+- 🎨 **Modern UI/UX** — Built with **Tailwind CSS**: responsive 2-column grid, soft shadow elevations, active touch reflexes, and floating glassmorphism navigation.
+- ⚡ **Lightweight Backend** — **Flask**-powered API serving pre-computed models for rapid response times.
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technologies Used |
+| --- | --- |
+| **Machine Learning** | Python, Scikit-Learn, Pandas, NumPy, Pickle |
+| **Backend** | Flask |
+| **Frontend** | HTML5, Tailwind CSS |
+| **Algorithms** | TF-IDF Vectorizer, Cosine Similarity |
+
+---
+
+## 🚀 Installation & Setup
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/ikrmrind/Moves-Recommendation-System-NLP-Approach-.git
+cd Moves-Recommendation-System-NLP-Approach-
 
 A machine learning-powered movie recommendation web application. This project uses Natural Language Processing (NLP) to analyze movie attributes and deliver highly accurate, content-based recommendations wrapped in a modern, iOS-inspired glassmorphism interface.
 
