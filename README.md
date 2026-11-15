@@ -23,8 +23,8 @@ A machine learning-powered movie recommendation web application. This project us
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/rewire-cinema.git
-cd rewire-cinema
+git clone https://github.com/ikrmrind/Moves-Recommendation-System-NLP-Approach-.git
+cd
 
 ```
 
