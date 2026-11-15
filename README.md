@@ -9,6 +9,8 @@
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ---
+<img width="824" height="441" alt="image" src="https://github.com/user-attachments/assets/168c7562-b151-4fc3-92ef-e017508544c4" />
+
 
 ## ✨ Features
 
