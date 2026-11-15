@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <!-- Tailwind CSS for modern, utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean, modern aesthetic */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Very light, cool off-white */
+        }
+    </style>
+</head>
+<body class="text-slate-800 pt-24 pb-12 antialiased">
+
+    <!-- Minimal Floating Navigation Bar (Glassmorphism) -->
+    <nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-lg border-b border-slate-200/50 shadow-sm transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+            <h1 class="text-xl font-semibold tracking-tight text-slate-900">Movies<span class="text-blue-600">Cinema</span></h1>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6">
+        
+        <!-- Search Section -->
+        <div class="mt-8 mb-16 text-center">
+            <h2 class="text-4xl font-semibold tracking-tight text-slate-900 mb-4">Find your next favorite film.</h2>
+            <p class="text-slate-500 mb-10">Powered by machine learning and natural language processing.</p>
+            
+            <form method="POST" action="/" class="max-w-2xl mx-auto relative">
+                <!-- White box with soft shadow and rounded corners -->
+                <div class="relative bg-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-shadow duration-300 flex items-center p-2 border border-slate-100">
+                    <svg class="w-6 h-6 text-slate-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input 
+                        type="text" 
+                        name="movie_title" 
+                        class="w-full py-3 px-4 outline-none bg-transparent text-lg text-slate-700 placeholder-slate-400" 
+                        placeholder="Enter a movie title..." 
+                        value="{{ search_query }}" 
+                        required
+                        autocomplete="off"
+                    >
+                    <!-- Smooth touch reflex on the button -->
+                    <button 
+                        type="submit" 
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-full transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Error State -->
+        {% if error %}
+        <div class="max-w-2xl mx-auto mb-12 bg-red-50 text-red-600 px-6 py-4 rounded-2xl border border-red-100 text-center animate-fade-in flex items-center justify-center gap-3">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+            <span class="font-medium">{{ error }}</span>
+        </div>
+        {% endif %}
+
+        <!-- Results Section (2-Column Grid) -->
+        {% if recommendations %}
+        <div class="animate-fade-in-up">
+            <div class="flex items-center justify-between mb-8">
+                <h3 class="text-xl font-medium text-slate-800">
+                    Recommendations for <span class="font-semibold text-blue-600">"{{ search_query }}"</span>
+                </h3>
+                <span class="text-sm text-slate-500 bg-slate-200/50 px-3 py-1 rounded-full">{{ recommendations|length }} matches</span>
+            </div>
+
+            <!-- iOS-style 2-column rounded card grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for movie in recommendations %}
+                <div class="group bg-white rounded-3xl p-6 border border-slate-100/50 shadow-[0_4px_20px_rgb(0,0,0,0.03)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgb(0,0,0,0.08)] active:scale-[0.98] active:translate-y-0 active:shadow-[0_2px_10px_rgb(0,0,0,0.04)] cursor-pointer flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-semibold text-lg transition-colors group-hover:bg-blue-600 group-hover:text-white">
+                            {{ loop.index }}
+                        </div>
+                        <h4 class="text-lg font-medium text-slate-800 group-hover:text-blue-600 transition-colors">{{ movie }}</h4>
+                    </div>
+                    <svg class="w-5 h-5 text-slate-300 group-hover:text-blue-500 transition-colors transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+    </main>
+
+    <!-- Simple animations -->
+    <style>
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        .animate-fade-in-up { animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</body>
+</html>
