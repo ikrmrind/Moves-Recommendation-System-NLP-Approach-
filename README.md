@@ -124,7 +124,3 @@ When a user searches for a movie, the application retrieves its pre-computed TF-
 
 **Author:** Muhammad Ikram
 *Machine Learning Developer*
-
----
-
-Would you like me to write up a quick requirements.txt file for this repo so visitors can install the dependencies with a single command?
